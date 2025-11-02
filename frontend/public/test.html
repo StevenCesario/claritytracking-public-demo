@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClarityTracking Test Page</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f0f0f0; }
+        h1 { color: #333; }
+        p { color: #555; }
+        .instructions { background-color: #fff; padding: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        code { background-color: #e0e0e0; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>ClarityTracking Snippet Test</h1>
+
+    <div class="instructions">
+        <p>This page includes the <code>claritytracking-tracker.js</code> snippet.</p>
+        <p>
+            Check your browser's Developer Console (usually F12) for logs prefixed with
+            <code>[ClarityTracking]</code>. You should see "Tracker Initializing..." followed by
+            "Sending event: PageView..." shortly after the page loads.
+        </p>
+        <p>
+            Also, check the Network tab in your DevTools for a POST request to
+            <code>/api/ingest/event</code>. Inspect its payload to ensure it contains the correct
+            <code>event_name</code>, <code>event_time</code>, <code>event_id</code>, <code>event_source_url</code>,
+            and the <code>user_data</code> object (including <code>user_agent</code>, <code>fbp</code>/<code>fbc</code> if cookies exist, and any UTM parameters or referrer info).
+        </p>
+         <p>
+            To test marketing parameters, add some to the URL like: <br>
+            <code>?utm_source=test_source&utm_medium=test_medium&utm_campaign=test_campaign&source=test_page</code>
+        </p>
+        <p>Finally, check your backend server logs and database (<code>event_logs</code> table) to confirm the event was received and stored correctly.</p>
+    </div>
+
+    <script src="/src/tracking/claritytracking-tracker.js"></script>
+
+    <hr style="margin-top: 30px;">
+    <p>Page content loads below...</p>
+    </body>
+</html>
